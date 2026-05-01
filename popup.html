@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>ラクロー打刻</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <h1>ラクロー打刻</h1>
+      <span id="today-label"></span>
+    </header>
+
+    <section class="summary">
+      <div class="card">
+        <span class="label">本日の打刻回数</span>
+        <span class="value" id="count">0</span>
+      </div>
+      <div class="card">
+        <span class="label">出勤</span>
+        <span class="value" id="in-time">--:--</span>
+      </div>
+      <div class="card">
+        <span class="label">退勤</span>
+        <span class="value" id="out-time">--:--</span>
+      </div>
+    </section>
+
+    <section class="actions">
+      <button id="apply-btn" class="primary" type="button">
+        現在のページの自己申告時間に反映
+      </button>
+      <button id="open-rakuro-btn" type="button">
+        ラクロー (月次) を開く
+      </button>
+      <button id="debug-btn" type="button" title="検出された当日行と入力欄をハイライト">
+        🔎 検出結果をハイライト (デバッグ)
+      </button>
+    </section>
+
+    <section id="debug-result" class="debug-result" hidden>
+      <pre id="debug-pre"></pre>
+    </section>
+
+    <section class="history">
+      <h2>本日の履歴</h2>
+      <ul id="history-list">
+        <li class="empty">まだ打刻はありません</li>
+      </ul>
+    </section>
+
+    <section class="manage">
+      <details>
+        <summary>過去の履歴 / 管理</summary>
+        <div class="manage-body">
+          <div class="row">
+            <label for="date-picker">日付:</label>
+            <input id="date-picker" type="date" />
+          </div>
+          <ul id="history-list-other"></ul>
+          <div class="row">
+            <button id="clear-today" type="button" class="danger">
+              本日の打刻履歴を削除
+            </button>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <footer>
+      <span>v0.1.0</span>
+    </footer>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

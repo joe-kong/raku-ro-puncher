@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "ラクロー打刻ボタン",
+  "version": "0.1.0",
+  "description": "ラクローに打刻ボタンを追加し、1日の1回目は出勤、2回目以降は退勤として自己申告時間に記録します。",
+  "permissions": ["storage", "activeTab", "scripting", "notifications"],
+  "host_permissions": ["https://www.raku-ro.com/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "ラクロー打刻"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.raku-ro.com/*"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}

@@ -1,0 +1,257 @@
+/* Floating punch button */
+#rakuro-puncher-fab {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 2147483646;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #2a7df0 0%, #1759c4 100%);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans",
+    "Yu Gothic", "Meiryo", sans-serif;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(23, 89, 196, 0.35), 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+  user-select: none;
+}
+
+#rakuro-puncher-fab:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(23, 89, 196, 0.45), 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#rakuro-puncher-fab:active {
+  transform: translateY(0);
+}
+
+#rakuro-puncher-fab .rakuro-puncher-fab-icon {
+  font-size: 16px;
+}
+
+#rakuro-puncher-fab .rakuro-puncher-fab-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.25);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* Modal overlay */
+.rakuro-puncher-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 23, 42, 0.55);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans",
+    "Yu Gothic", "Meiryo", sans-serif;
+  animation: rakuro-fade-in 0.18s ease;
+}
+
+@keyframes rakuro-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.rakuro-puncher-modal {
+  width: 360px;
+  max-width: calc(100vw - 32px);
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  color: #0f172a;
+  animation: rakuro-pop-in 0.18s ease;
+}
+
+@keyframes rakuro-pop-in {
+  from {
+    transform: translateY(8px) scale(0.98);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.rakuro-puncher-modal h2 {
+  margin: 0 0 14px 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.rakuro-puncher-info {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px 16px;
+  padding: 14px;
+  background: #f8fafc;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 14px;
+}
+
+.rakuro-puncher-info .label {
+  color: #64748b;
+}
+
+.rakuro-puncher-info .value {
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.rakuro-puncher-type {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.rakuro-puncher-type.in {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.rakuro-puncher-type.out {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.rakuro-puncher-time-big {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.rakuro-puncher-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.rakuro-puncher-actions button {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.rakuro-puncher-actions .rakuro-puncher-cancel {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.rakuro-puncher-actions .rakuro-puncher-cancel:hover {
+  background: #e2e8f0;
+}
+
+.rakuro-puncher-actions .rakuro-puncher-confirm {
+  background: #2a7df0;
+  color: #fff;
+}
+
+.rakuro-puncher-actions .rakuro-puncher-confirm:hover {
+  background: #1759c4;
+}
+
+.rakuro-puncher-actions button:active {
+  transform: scale(0.98);
+}
+
+.rakuro-puncher-history {
+  margin-top: 14px;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 12px;
+}
+
+.rakuro-puncher-history details summary {
+  font-size: 12px;
+  color: #64748b;
+  cursor: pointer;
+  user-select: none;
+}
+
+.rakuro-puncher-history ul {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0 0;
+  font-size: 12px;
+  color: #475569;
+}
+
+.rakuro-puncher-history li {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  border-bottom: 1px dashed #e2e8f0;
+}
+
+.rakuro-puncher-history li:last-child {
+  border-bottom: none;
+}
+
+/* Toast */
+.rakuro-puncher-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 90px;
+  transform: translateX(-50%) translateY(20px);
+  z-index: 2147483647;
+  padding: 10px 18px;
+  background: rgba(15, 23, 42, 0.92);
+  color: #fff;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans",
+    "Yu Gothic", "Meiryo", sans-serif;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+  white-space: nowrap;
+  max-width: calc(100vw - 32px);
+}
+
+.rakuro-puncher-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.rakuro-puncher-toast.error {
+  background: rgba(153, 27, 27, 0.95);
+}
+
+/* Filled input highlight */
+.rakuro-puncher-filled {
+  outline: 2px solid #22c55e !important;
+  outline-offset: 2px;
+  transition: outline 0.3s ease;
+}
